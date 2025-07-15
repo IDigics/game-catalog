@@ -1,6 +1,6 @@
 import React from "react";
 
-function GameCard({ image, title, description, About }) {
+function GameCard({ image, title, description, About, category }) {
   return (
     <div className="bg-[#121212] border-2 border-[#CCFFFF] rounded-xl shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 w-80">
       <figure className="p-4 flex justify-center">
@@ -17,10 +17,7 @@ function GameCard({ image, title, description, About }) {
         <p className="text-sm text-[#B3B3B3] mb-4">{description}</p>
         <div className="flex gap-2 mb-8">
           <span className="bg-[#CCFFFF] text-[#000000] px-2 py-1 rounded text-xs">
-            Adventure
-          </span>
-          <span className="bg-[#CCFFFF] text-[#000000] px-2 py-1 rounded text-xs">
-            Puzzle
+            {category}
           </span>
         </div>
         <a
