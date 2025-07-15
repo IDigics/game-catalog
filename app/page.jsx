@@ -1,25 +1,27 @@
 import React from "react";
 import GameCard from "./components/gamecard";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 
 const games = [
   {
-    image:
-      "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
-    title: "Adventure Quest",
-    description: "Embark on an epic adventure through mysterious lands.",
+    image: "/eldenring.jpg",
+    title: "elden ring",
+    description:
+      "journey through a interconnected world filled with danger and mystery.",
+    about: "https://en.bandainamcoent.eu/elden-ring",
   },
   {
     image: "/LifeIsStrange.png",
-    title: "Space Explorer",
-    description: "Explore the vast universe and discover new planets.",
+    title: "Life is Strange",
+    description: "Experience a gripping story with choices that matter.",
     about: "https://lifeisstrange.square-enix-games.com/en-us",
   },
   {
-    image:
-      "https://img.daisyui.com/images/stock/photo-1465101046530-73398c7f28ca.webp",
-    title: "Mystery Mansion",
-    description: "Solve puzzles and uncover secrets in the mansion.",
+    image: "/warframe.jpeg",
+    title: "Warframe",
+    description:
+      "Join the fight against the Grineer and save the Origin System.",
+    about: "https://www.warframe.com/",
   },
   {
     image:
@@ -61,7 +63,7 @@ const games = [
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#242020] bg-cover bg-center">
       <Navbar />
       <div className="max-w-7xl mx-auto py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">

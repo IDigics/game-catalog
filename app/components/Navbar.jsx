@@ -2,18 +2,18 @@ import React from "react";
 
 function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 bg-[#22123a] text-white px-8 py-4 flex items-center justify-between shadow-lg">
-      <div className="font-bold text-2xl tracking-wide text-purple-300">
-        Game Catalog
+    <nav className="sticky top-0 z-50 bg-[#121212] border-2 text-[#CCFFFF] px-20  py-4 flex items-center justify-between shadow-lg">
+      <div className="font-bold text-2xl tracking-wide text-[#CCFFFF]">
+        Game niggers
       </div>
       <div className="flex gap-8 text-lg">
-        <a href="/" className="hover:text-purple-400 transition">
+        <a href="/" className="hover:text-[#FF9933] transition">
           Home
         </a>
-        <a href="/about" className="hover:text-purple-400 transition">
+        <a href="/about" className="hover:text-[#FF9933] transition">
           About
         </a>
-        <a href="/contact" className="hover:text-purple-400 transition">
+        <a href="/contact" className="hover:text-[#FF9933] transition">
           Contact
         </a>
       </div>
