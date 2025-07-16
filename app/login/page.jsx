@@ -1,13 +1,15 @@
 import Navbar from "../components/Navbar";
 import LoginForm from "../components/LoginForm";
-import SignUpForm from "../components/SignUpForm";
+import Link from "next/link";
 
-export default function LoginPage() {
+export default function Login() {
   return (
-    <div className="min-h-screen bg-[#040404] bg-cover bg-center">
-      <Navbar />
-      <div className="flex justify-center items-center flex-grow pt-20">
-        <SignUpForm />
+    <div>
+      <div className="min-h-screen bg-[#040404] bg-cover bg-center">
+        <Navbar />
+        <div className="flex justify-center items-center flex-grow pt-20">
+          <LoginForm />
+        </div>
       </div>
     </div>
   );

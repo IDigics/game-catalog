@@ -1,18 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // For demonstration, we'll just log the credentials.
     // In a real app, you'd send this to an authentication endpoint.
-    console.log("Login submitted:", { email, password });
-    alert("Check the console for login details. This is a demo.");
-    // Here you would typically handle the login logic, e.g., an API call.
+
+    try {
+      const response = await fetch("http://192.168.1.83:3000/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        alert("Login successful!");
+        // Redirect to login page or perform other actions upon successful signup
+      } else {
+        const errorData = await response.json();
+        alert(`Login failed: ${errorData.message || "Unknown error"}`);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("An error occurred during Login");
+    }
   };
 
   return (
@@ -70,12 +88,6 @@ export default function LoginForm() {
           >
             Sign in
           </button>
-
-          <div className="text-center mt-4">
-            <Link href="http://192.168.1.1:3000/auth/signup">
-              Don't have an account? Sign Up
-            </Link>
-          </div>
         </div>
       </form>
     </div>

@@ -14,15 +14,14 @@ function Navbar() {
         <Link href="/" className="hover:text-[#FF9933] transition">
           Home
         </Link>
-        <Link href="/about" className="hover:text-[#FF9933] transition">
-          About
-        </Link>
-        <Link href="/contact" className="hover:text-[#FF9933] transition">
-          Contact
-        </Link>
         <Link href="/login">
           <button className="bg-[#CCFFFF] text-[#000000] font-semibold px-4 py-2 rounded-lg hover:bg-[#FF9933] transition">
             Login
+          </button>
+        </Link>
+        <Link href="/signup">
+          <button className="bg-[#CCFFFF] text-[#000000] font-semibold px-4 py-2 rounded-lg hover:bg-[#FF9933] transition">
+            Sign Up
           </button>
         </Link>
       </div>
