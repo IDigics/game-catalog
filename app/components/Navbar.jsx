@@ -1,14 +1,32 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 function Navbar() {
+  const [clickCount, setClickCount] = useState(0);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const newCount = clickCount + 1;
+
+    if (newCount >= 5) {
+      window.open("https://www.youtube.com/watch?v=khP8a1FLE_4", "_blank");
+      setClickCount(0); // reset after opening
+    } else {
+      setClickCount(newCount);
+    }
+  };
+
   return (
     <nav className="sticky top-0 z-50 bg-[#121212] border-2 text-[#CCFFFF] px-20 py-4 flex items-center justify-between shadow-lg">
       <div className="flex justify-center items-center font-bold text-2xl tracking-wide text-[#CCFFFF]">
-        <Link href="/" className="hover:text-[#FF9933] transition">
+        <a
+          href="#"
+          onClick={handleClick}
+          className="hover:text-[#FF9933] transition cursor-pointer"
+        >
           Game Review
-        </Link>
+        </a>
       </div>
       <div className="flex items-center gap-8 text-lg">
         <Link href="/" className="hover:text-[#FF9933] transition">
