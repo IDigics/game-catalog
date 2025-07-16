@@ -11,7 +11,7 @@ function Navbar() {
 
     if (newCount >= 5) {
       window.open("https://www.youtube.com/watch?v=khP8a1FLE_4", "_blank");
-      setClickCount(0); // reset after opening
+      setClickCount(0);
     } else {
       setClickCount(newCount);
     }

@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar";
 import LoginForm from "../components/LoginForm";
-import Link from "next/link";
 
 export default function Login() {
   return (
