@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import Link from "next/link";
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,6 +70,12 @@ export default function LoginForm() {
           >
             Sign in
           </button>
+
+          <div className="text-center mt-4">
+            <Link href="http://192.168.1.1:3000/auth/signup">
+              Don't have an account? Sign Up
+            </Link>
+          </div>
         </div>
       </form>
     </div>

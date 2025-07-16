@@ -21,6 +21,7 @@ function GameCard({ image, title, description, About, category }) {
           </span>
         </div>
         <a
+          target="_blank"
           href={About}
           className="absolute bottom-4 right-4 bg-[#CCFFFF] hover:bg-[#FF9933] text-[#000000] px-5 py-2 rounded text-xs shadow transition"
         >
