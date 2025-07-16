@@ -4,7 +4,7 @@ import React, { useState } from "react";
 function Navbar() {
   const [clickCount, setClickCount] = useState(0);
 
-  const handleGameReviewClick = (e) => {
+  const Click = (e) => {
     e.preventDefault();
     const newCount = clickCount + 1;
     setClickCount(newCount);
@@ -17,12 +17,8 @@ function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-[#121212] border-2 text-[#CCFFFF] px-20 py-4 flex items-center justify-between shadow-lg">
-      <div className="font-bold text-2xl tracking-wide text-[#CCFFFF]">
-        <a
-          href="/"
-          onClick={handleGameReviewClick}
-          className="hover:text-[#FF9933] transition"
-        >
+      <div className="flex justify-center items-center font-bold text-2xl tracking-wide text-[#CCFFFF]">
+        <a href="/" onClick={Click} className="hover:text-[#FF9933] transition">
           Game Review
         </a>
       </div>

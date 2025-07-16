@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import GameCard from "./components/gamecard";
 import Navbar from "./components/Navbar";
 
@@ -45,18 +46,50 @@ const games = [
     title: "Free Fire",
     description: "Battle against players worldwide in this fast-paced shooter.",
     about: "https://ff.garena.com/",
+    category: "Shooter",
   },
 ];
 
 const Home = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  // Dynamically extract unique categories
+  const categories = [
+    "All",
+    ...Array.from(new Set(games.map((game) => game.category || "Adventure"))),
+  ];
+
+  // Filter games based on selected category
+  const filteredGames =
+    selectedCategory === "All"
+      ? games
+      : games.filter(
+          (game) => (game.category || "Adventure") === selectedCategory
+        );
+
   return (
-    <div className="min-h-screen bg-[#242020] bg-cover bg-center">
+    <div className="min-h-screen bg-[#040404] bg-cover bg-center">
       <Navbar />
-      <div className="max-w-7xl mx-auto py-12">
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-center flex-wrap gap-4 mb-8">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-4 py-2 rounded-lg transition font-semibold ${
+                selectedCategory === category
+                  ? "bg-[#CCFFFF] text-[#000000]"
+                  : "bg-transparent border-2 border-[#CCFFFF] text-[#CCFFFF] hover:bg-[#CCFFFF] hover:text-[#000000]"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-          {games.map((game, idx) => (
+          {filteredGames.map((game) => (
             <GameCard
-              key={idx}
+              key={game.title}
               image={game.image}
               title={game.title}
               description={game.description}
