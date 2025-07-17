@@ -5,7 +5,7 @@ import Link from "next/link";
 function Navbar() {
   const [clickCount, setClickCount] = useState(0);
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const newCount = clickCount + 1;
 

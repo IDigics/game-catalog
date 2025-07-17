@@ -1,7 +1,8 @@
+import React from "react";
 import Navbar from "../../components/Navbar";
 import SignUpForm from "../../components/SignUpForm";
 
-export default function SignupPage() {
+export default function SignupPage(): React.ReactElement {
   return (
     <div className="min-h-screen bg-[#040404] bg-cover bg-center">
       <Navbar />

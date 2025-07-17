@@ -2,7 +2,15 @@
 import React, { useState } from "react";
 import GameCard from "../components/gamecard";
 
-const games = [
+interface Game {
+  image: string;
+  title: string;
+  description: string;
+  about: string;
+  category: string;
+}
+
+const games: Game[] = [
   {
     image: "/eldenring.jpg",
     title: "elden ring",
@@ -56,8 +64,8 @@ const games = [
   },
 ];
 
-const Home = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+const Home: React.FC = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   // Dynamically extract unique categories
   const categories = [

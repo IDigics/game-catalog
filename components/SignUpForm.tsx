@@ -1,13 +1,14 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 
 export default function SignUpForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState(""); // Added confirm password field
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>(""); // Added confirm password field
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -57,7 +58,9 @@ export default function SignUpForm() {
             autoComplete="email"
             required
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             className="mt-1 p-2 w-full border rounded-md text-[#CCFFFF]"
           />
         </div>
@@ -75,7 +78,9 @@ export default function SignUpForm() {
             autoComplete="new-password"
             required
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
             className="mt-1 p-2 w-full border rounded-md text-[#CCFFFF]"
           />
         </div>
@@ -93,7 +98,9 @@ export default function SignUpForm() {
             type="password"
             autoComplete="new-password"
             required
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setConfirmPassword(e.target.value)
+            }
             className="mt-1 p-2 w-full border rounded-md text-[#CCFFFF]"
           />
         </div>

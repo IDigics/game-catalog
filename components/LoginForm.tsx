@@ -1,12 +1,13 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // For demonstration, we'll just log the credentials.
     // In a real app, you'd send this to an authentication endpoint.
