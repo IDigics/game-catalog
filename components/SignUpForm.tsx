@@ -2,39 +2,30 @@
 
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 
 export default function SignUpForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>(""); // Added confirm password field
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setError("");
+    setSuccess("");
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      setError("Passwords do not match");
       return;
     }
-
     try {
-      const response = await fetch("http://192.168.1.83:3000/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        alert("Signup successful!");
-        // Redirect to login page or perform other actions upon successful signup
-      } else {
-        const errorData = await response.json();
-        alert(`Signup failed: ${errorData.message || "Unknown error"}`);
-      }
-    } catch (error) {
-      console.error("Signup error:", error);
-      alert("An error occurred during signup");
+      // Replace with your actual API endpoint
+      await axios.post("/api/signup", { email, password });
+      setSuccess("Signup successful!");
+      // Redirect or perform other actions
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Signup failed");
     }
   };
 
@@ -43,6 +34,10 @@ export default function SignUpForm() {
       <h2 className="text-3xl font-bold text-center text-[#CCFFFF] mb-8">
         Sign Up
       </h2>
+      {error && <div className="text-red-500 text-center mb-4">{error}</div>}
+      {success && (
+        <div className="text-green-500 text-center mb-4">{success}</div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label

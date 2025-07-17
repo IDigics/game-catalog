@@ -2,35 +2,23 @@
 
 import React from "react";
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // For demonstration, we'll just log the credentials.
-    // In a real app, you'd send this to an authentication endpoint.
-
+    setError("");
     try {
-      const response = await fetch("http://192.168.1.83:3000/auth/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        alert("Login successful!");
-        // Redirect to login page or perform other actions upon successful signup
-      } else {
-        const errorData = await response.json();
-        alert(`Login failed: ${errorData.message || "Unknown error"}`);
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("An error occurred during Login");
+      await login(email, password);
+      alert("Login successful!");
+      // Redirect or perform other actions
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Login failed");
     }
   };
 
@@ -39,6 +27,7 @@ export default function LoginForm() {
       <h2 className="text-3xl font-bold text-center text-[#CCFFFF] mb-8">
         Login
       </h2>
+      {error && <div className="text-red-500 text-center mb-4">{error}</div>}
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label
@@ -55,7 +44,9 @@ export default function LoginForm() {
               autoComplete="email"
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
               className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#FF9933] focus:border-[#FF9933] sm:text-sm bg-[#000000] text-white"
             />
           </div>
@@ -76,7 +67,9 @@ export default function LoginForm() {
               autoComplete="current-password"
               required
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setPassword(e.target.value)
+              }
               className="appearance-none block w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#FF9933] focus:border-[#FF9933] sm:text-sm bg-[#000000] text-white"
             />
           </div>
