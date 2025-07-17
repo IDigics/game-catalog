@@ -42,6 +42,10 @@ function Navbar() {
             Sign Up
           </button>
         </Link>
+        <button>
+          {clickCount >= 2 ? <p>test3</p> : <p>test2</p>}
+          test
+        </button>
       </div>
     </nav>
   );

@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import GameCard from "./components/gamecard";
-import Navbar from "./components/Navbar";
+import GameCard from "../components/gamecard";
 
 const games = [
   {
@@ -48,6 +47,13 @@ const games = [
     about: "https://ff.garena.com/",
     category: "Shooter",
   },
+  {
+    image: "/freefire.jpeg",
+    title: "Free",
+    description: "Battle against players worldwide in this fast-paced shooter.",
+    about: "https://ff.garena.com/",
+    category: "Shooter",
+  },
 ];
 
 const Home = () => {
@@ -69,7 +75,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-[#040404] bg-cover bg-center">
-      <Navbar />
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="flex justify-center flex-wrap gap-4 mb-8">
           {categories.map((category) => (
